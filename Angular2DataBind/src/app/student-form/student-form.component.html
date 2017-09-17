@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<h2>Angular2 Data Binding</h2>
+	<form (ngSubmit)="onSubmit();" [formGroup]="studentForm">
+		<div class="form-group">
+			<label class="col-xs-4 control-label" for="studentName">Student Name: </label>
+			<div class="col-xs-8">
+				<input type="text" name="studentName"  formControlName="studentName" required
+				>
+			<div *ngIf="studentForm.get('studentName').invalid && processValidation" [ngClass]="'error'">
+				student name is required!
+			</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label" for="email">Email: </label>
+			<div class="col-xs-8">
+				<input type="email" name="email" formControlName="email" required
+                >
+				<div *ngIf="studentForm.get('email').invalid && processValidation" [ngClass]="'error'">
+					email required!
+				</div>
+			</div>			
+		</div>
+		<div class="form-group">
+			<label class="col-xs-4 control-label" for="mobile">
+				Mobile: 
+			</label>
+			<div class="col-xs-8">
+				<input type="number" name="mobile" formControlName="mobile" required
+				>
+				<div *ngIf="studentForm.get('mobile').invalid && processValidation" [ngClass]="'error'">Mobile number is required!</div>
+			</div>
+		</div>
+     <div class="form-group">
+        <div class="col-xs-12">
+            <button type="submit" class="btn btn-default" [disabled]="!studentForm.valid">Submit</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div *ngIf="statusCode; else processing">
+   <div *ngIf="statusCode === 201" [ngClass] = "'success'">
+	 Student added successfully.
+   </div>   
+   <div *ngIf="statusCode === 409" [ngClass] = "'success'">
+        Student already exists.
+   </div>   	
+   <div *ngIf="statusCode === 200" [ngClass] = "'success'">
+        Student updated successfully.
+   </div>   	      
+   <div *ngIf="statusCode === 204" [ngClass] = "'success'">
+        Student deleted successfully.
+   </div>   	   
+   <div *ngIf="statusCode === 500" [ngClass] = "'error'">
+        Internal Server Error.
+   </div>   	
+ </div>
+    </div>
+</form>
+<h3>Student Details</h3>
+<table>
+  <tr><th> StudentID</th> <th>StudentName</th><th>Email</th><th>Moblie</th><th></th><th></th></tr>
+  <tr *ngFor="let student of allStudents" >
+        <td>{{student.studentId}}</td> <td>{{student.studentName}}</td> <td>{{student.email}}</td><td>{{student.mobile}}</td>
+	<td><button type="button" (click)="loadStudentToEdit(student.studentId)">Edit</button> </td> 
+	<td><button type="button" (click)="deleteStudent(student.studentId)">Delete</button></td>
+  </tr>
+</table> 
+</html>
