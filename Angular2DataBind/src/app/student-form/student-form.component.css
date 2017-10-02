@@ -4,6 +4,8 @@ h2 {
             -moz-animation-name: slidein;
             -webkit-animation-name: slidein;
             color: blue;
+            padding-left: 40%;
+            align-self: center;
 
          }
          @-moz-keyframes slidein {
@@ -28,9 +30,20 @@ h2 {
          }
 h3 { 
    color: blue;
+    align-self: center;
+    padding-left: 45%;
 }
+
+form{
+    margin:0 auto;
+    padding-left: 40%;
+    align-self: center;
+}
+
 table {
     border-collapse: collapse;
+    margin:0 auto;
+    align-self: center;
 }
 table, th, td {
     border: 1px solid black;
@@ -41,11 +54,13 @@ input {
     margin: 8px 0;
     background-color: #dfdfdf;
     font-size:17px;
+    align-content: center;
 }
 button {
     background-color: #008CBA;
     color: white;
 }
+
 .error{
     color: red;
     font-size: 20px;
