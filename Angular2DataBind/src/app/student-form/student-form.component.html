@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<h2>Angular2 Data Binding</h2>
-	<form (ngSubmit)="onSubmit();" [formGroup]="studentForm">
+<h2 style="margin:0 auto" align=center>Angular2+SpringBoot</h2>
+	<form (ngSubmit)="onSubmit();" [formGroup]="studentForm" style="margin:0 auto" align=center>
 		<div class="form-group">
 			<label class="col-xs-4 control-label" for="studentName">Student Name: </label>
 			<div class="col-xs-8">
@@ -57,8 +57,8 @@
  </div>
     </div>
 </form>
-<h3>Student Details</h3>
-<table>
+<h3 style="margin:0 auto" align=center>Student Details</h3>
+<table style="margin:0 auto" align=center>
   <tr><th> StudentID</th> <th>StudentName</th><th>Email</th><th>Moblie</th><th></th><th></th></tr>
   <tr *ngFor="let student of allStudents" >
         <td>{{student.studentId}}</td> <td>{{student.studentName}}</td> <td>{{student.email}}</td><td>{{student.mobile}}</td>

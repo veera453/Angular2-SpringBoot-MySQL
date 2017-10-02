@@ -51,7 +51,7 @@ public class StudentController {
         return new ResponseEntity<Student>(student, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/deleteStudent", method= RequestMethod.GET)
+	@RequestMapping(value="/deleteStudent", method= RequestMethod.POST)
 	public ResponseEntity<Void>  deleteStudent(@RequestParam("id") String id){
 		studentService.deleteStudent(Integer.parseInt(id));
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

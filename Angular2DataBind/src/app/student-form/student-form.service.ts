@@ -12,7 +12,7 @@ export class StudentFormService {
   allStudentsUrl="http://localhost:8080/allStudents";
   studentByIdUrl= "http://localhost:8080/getStudentById";
   studentUpdateUrl = "http://localhost:8080/updateStudent";
-  studentDeleteUrl = "http://localhost:8080/deleteStudent/{id}";
+  studentDeleteUrl = "http://localhost:8080/deleteStudent";
 
   constructor(private http: Http) { }
 
@@ -53,7 +53,7 @@ export class StudentFormService {
     cpParams.set('id', studentId);      
     let options = new RequestOptions({ headers: cpHeaders, params: cpParams });
 
-    return this.http.delete(this.studentDeleteUrl, cpParams)
+    return this.http.post(this.studentDeleteUrl, cpParams)
                .map(success => success.status)
                .catch(this.handleError);
   }
