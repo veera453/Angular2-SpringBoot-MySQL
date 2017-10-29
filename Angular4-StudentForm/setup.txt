@@ -1,0 +1,7 @@
+step1: open nodejs command prompt, pointing to peoject root folder and run the below command
+            "npm install"
+             once run the command then "node_modules" folder will be created.
+step2: in the same node js commad prompt run the below commad 
+            "npm start"
+step: open the open the chrome or any ide then type below url
+          "http://localhose:4200".  

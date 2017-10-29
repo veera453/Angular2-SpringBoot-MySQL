@@ -18,6 +18,9 @@ export class StudentFormComponent implements OnInit {
   processValidation = false;
   requestProcessing = false;
   submitted = false;
+
+  successMessage: string = '';
+  errorMessage: string = '';
   //data: string;
 
   //Create form group
@@ -57,19 +60,23 @@ export class StudentFormComponent implements OnInit {
 
      this.studentFormService.saveStudentInfo(student)
       .subscribe(successCode => {
-        this.statusCode = successCode;
+        //this.statusCode = successCode;
+        this.successMessage = 'Student added successfully.';
         this.preProcessConfigurations();
         this.getAllStudents();
         this. backToCreateStudent();
       },
-      errorCode => this.statusCode = errorCode);
+      errorCode => //this.statusCode = errorCode
+        this.errorMessage = 'Student already exists.';
+      );
   }else{
     //Handle update student 
     let student = new Student(this.studentIdToUpdate, studentName, email, mobile);
 
     this.studentFormService.updateStudentInfo(student)
         .subscribe(successCode => {
-          this.statusCode = successCode;
+          /*this.statusCode = successCode;*/
+          this.successMessage = 'Student updated successfully.';
           this.getAllStudents();
           this.backToCreateStudent();
         })
@@ -86,7 +93,9 @@ loadStudentToEdit(studentId: string){
         this.processValidation=true;
         this.requestProcessing=false;
       },
-      errorCode => this.statusCode = errorCode);
+      errorCode => /*this.statusCode = errorCode;*/
+      this.errorMessage = 'Internal Server Error.';
+      );
 }
 
 //delete student
@@ -94,7 +103,8 @@ deleteStudent(studentId: string) {
   this.preProcessConfigurations();
   this.studentFormService.deleteStudentById(studentId)
       .subscribe(successCode => {
-        this.statusCode = successCode;
+        //this.statusCode = successCode;
+        this.successMessage = 'Student deleted successfully.';
         this.getAllStudents();
         this.backToCreateStudent();
       })

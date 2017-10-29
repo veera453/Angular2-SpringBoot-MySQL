@@ -3,9 +3,10 @@ h2 {
             -webkit-animation-duration: 3s;
             -moz-animation-name: slidein;
             -webkit-animation-name: slidein;
-            color: blue;
+            color: green;
             padding-left: 40%;
             align-self: center;
+            font-weight: 600;
 
          }
          @-moz-keyframes slidein {
@@ -29,9 +30,10 @@ h2 {
             }
          }
 h3 { 
-   color: blue;
+    color: green;
     align-self: center;
     padding-left: 45%;
+    font-weight: 600;
 }
 
 form{
@@ -40,26 +42,59 @@ form{
     align-self: center;
 }
 
+.top-buffer { margin-top:5%; }
+
 table {
     border-collapse: collapse;
     margin:0 auto;
-    align-self: center;
+    
 }
-table, th, td {
+table, td {
     border: 1px solid black;
     font-size:17px;
 }
+
+.table tr.active td {
+  background-color:#123456 !important;
+  color: white;
+}
+
+thead{
+    background: green;
+    color: white;
+}
+
 input {
     width: 225px;
     margin: 8px 0;
     background-color: #dfdfdf;
     font-size:17px;
-    align-content: center;
+    
 }
-button {
+
+label{
+    font-size: 18px;
+}
+
+input.ng-invalid{
+    border-left: 5px solid red;
+}
+
+input.ng-valid{
+    border-left: 5px solid green;
+}
+
+.alert{
+   right: 33%;
+   width: 250px;
+   position: fixed;
+}
+
+/*button  {
     background-color: #008CBA;
     color: white;
-}
+    width: 15%;
+}*/
 
 /*.error{
     color: red;
@@ -69,3 +104,32 @@ button {
     color: green;
     font-size: 20px;
 } */
+
+footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: blue;
+   color: white;
+   text-align: center;
+}
+
+#grayOutDiv
+{
+    background-color: #333;
+    opacity: 0.7;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.flash-messages
+{
+    z-index: 10000;
+    position: relative;
+}

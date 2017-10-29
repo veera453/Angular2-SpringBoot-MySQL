@@ -1,0 +1,16 @@
+.alert{
+	top: 9%;
+    right: 0;
+	width: 500px;
+	font-size: 15px;
+	position: fixed;
+}
+
+/*#message {
+    
+    
+    width: 100%;
+}
+#inner-message {
+    margin: 0 auto;
+}*/

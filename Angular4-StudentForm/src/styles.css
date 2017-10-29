@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+/* navbar */
+.navbar-default {
+    background-color: #5a9732;
+    border-color: #E7E7E7;
+}
+/* Title */
+.navbar-default .navbar-brand {
+    color: #ffffff;
+    font-size: 25px;
+    font-family: bold;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}

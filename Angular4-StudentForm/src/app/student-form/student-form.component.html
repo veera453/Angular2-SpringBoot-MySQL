@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Angular2+SpringBoot</title>
+</head>
+<body>
+	
+<!-- <div style="padding-left: 45%;"><app-flash-messages></app-flash-messages></div> -->
+     
+<div class="container">
+	<div style="padding-right: 0%">
+    <h2>Student Form</h2>      
+  </div> 
+	<form (ngSubmit)="onSubmit();" [formGroup]="studentForm">
+		<div class="form-group">
+			<label>Student Name: </label>
+				<input type="text" class="form-control"  formControlName="studentName" 
+				>
+				<!-- <b>{{studentname.className}}</b> -->
+			<div *ngIf="studentForm.controls['studentName'].hasError('required') && studentForm.controls['studentName'].touched" class="alert alert-danger">
+				student name is required!
+			</div>
+			<div *ngIf="studentForm.controls['studentName'].hasError('minlength')" class="alert alert-danger">
+                 Please enter atleast 4 characters.
+        </div>
+        <div *ngIf="studentForm.controls['studentName'].hasError('maxlength')" class="alert alert-danger">
+                 Name can not exceed 10 characters.
+        </div>
+		</div>
+		<div class="form-group">
+			<label>Email: </label>
+				<input type="email" class="form-control" formControlName="email">
+				<div *ngIf="studentForm.controls['email'].hasError('pattern')" class="alert alert-danger">
+					Please enter valid email.
+				</div>		
+		</div>
+		<div class="form-group">
+			<label>
+				Mobile: 
+			</label>
+				<input type="number" class="form-control" formControlName="mobile" 
+				>
+				<div *ngIf="studentForm.controls['mobile'].hasError('pattern')" class="alert alert-danger">Please enter atleast 10 numbers.</div>
+		</div>
+
+     <div class="form-group top-buffer">
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary" [disabled]="!studentForm.valid">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="studentForm.reset()">Reset</button>
+        </div>
+    </div>
+</form>
+
+<div class="container">
+	<div class="top-buffer" style="padding-right: 8%">
+<h3>Student Details</h3>
+</div>
+<div class="col-md-6 col-md-offset-6">
+
+<button [disabled]="selectedRow == null" type="button" style="width: 13%; background: green;" class="btn btn-primary" (click)="loadStudentToEdit(allStudents, selectedRow)">Edit</button>
+<button [disabled]="selectedRow == null" type="button" class="btn btn-primary" style="background: green" (click)="deleteStudent(allStudents, selectedRow)">Delete</button>
+</div>
+  <div class="top-buffer">
+	<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>StudentID</th>
+      <th>StudentName</th>
+      <th>Email</th>
+      <th>Moblie</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of allStudents; let i = index" (click)="setClickedRow(i, $event)" [class.active]="i == selectedRow">
+      <td>{{student.studentId}}</td>
+      <td>{{student.studentName}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.mobile}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="well well-lg">
+    Selected Row : <strong>{{selectedRow}}</strong>
+</div>
+</div>
+</div>
+<div class="pull-right"><ngx-flash-messages></ngx-flash-messages></div>
+</body>
+</html>
